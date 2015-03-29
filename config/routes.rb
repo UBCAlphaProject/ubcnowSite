@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
-  get 'main/home'
+  
+  resources :blips
 
   # Root site to the home page
   root 'main#home'
