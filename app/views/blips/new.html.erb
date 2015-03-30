@@ -1,2 +1,35 @@
-<h1>Blips#new</h1>
-<p>Find me in app/views/blips/new.html.erb</p>
+<h1>Make a Blip</h1>
+
+<%= form_tag(:action => 'create', :method => :post) do %>
+  <%= label_tag(:title, "Title")%>
+  <br>
+  <%= text_field_tag(:title) %>
+  <br>
+  <br>
+  <%= label_tag(:summary, "Summary")%>
+   <br>
+  <%= text_area_tag(:summary) %>
+  <br>
+  <br>
+  <%= label_tag(:link, "Link")%>
+  <br>
+  <%= text_field_tag(:link) %>
+  <br>
+  <br>
+  <%= label_tag(:time, "Time")%>
+  <br>
+  <%= time_field_tag(:time) %>
+  <br>
+  <br>
+  <%= label_tag(:lat, "Lat")%>
+  <br>
+  <%= text_field_tag(:lat)%>
+  <br>
+  <br>
+  <%= label_tag(:lng, "Lng")%>
+  <br>
+  <%= text_field_tag(:lng)%>
+  <br>
+  <br>
+  <%= submit_tag("Create") %>
+<% end %>
