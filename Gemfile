@@ -38,3 +38,8 @@ gem 'spring',        group: :development
 # Use debugger
 # gem 'debugger', group: [:development, :test]
 
+# Using curb for a REST client
+gem 'curb'
+
+# Using json for simple to/from JSON conversion
+gem 'json'

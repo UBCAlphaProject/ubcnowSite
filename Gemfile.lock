@@ -36,6 +36,7 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.9.1)
+    curb (0.8.7)
     erubis (2.7.0)
     execjs (2.4.0)
     hike (1.2.3)
@@ -109,8 +110,10 @@ PLATFORMS
 
 DEPENDENCIES
   coffee-rails (~> 4.0.0)
+  curb
   jbuilder (~> 2.0)
   jquery-rails
+  json
   rails (= 4.1.8)
   sass-rails (~> 4.0.3)
   sdoc (~> 0.4.0)
