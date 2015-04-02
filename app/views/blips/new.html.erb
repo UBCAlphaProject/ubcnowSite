@@ -23,12 +23,12 @@
   <br>
   <%= label_tag(:lat, "Lat")%>
   <br>
-  <%= number_field_tag(:lat)%>
+  <%= number_field_tag(:lat, nil, :step => 'any')%>
   <br>
   <br>
   <%= label_tag(:lng, "Lng")%>
   <br>
-  <%= number_field_tag(:lng)%>
+  <%= number_field_tag(:lng, nil, :step => 'any')%>
   <br>
   <br>
   <%= submit_tag("Create") %>
