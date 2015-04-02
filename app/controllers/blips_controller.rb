@@ -11,7 +11,7 @@ class BlipsController < ApplicationController
     # TODO GID will be taken from cookies hash and added here to newBlip
     # Need to recieve the GID to be able to implement/test this, in the 
     # meantime using the value 0 for all group IDs 
-    newBlip[:gid]     = 0
+    newBlip[:gid]     = 1
     newBlip[:title]   = params[:title]
     newBlip[:summary] = params[:summary]
     newBlip[:link]    = params[:link]
@@ -27,6 +27,7 @@ class BlipsController < ApplicationController
       curl.headers['Api-Version'] = '2.2'
     end
 
+    # DEBUG
     puts "#{c.body_str}"
 
     redirect_to(:action => index)
