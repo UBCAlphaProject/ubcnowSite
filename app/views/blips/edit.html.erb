@@ -1,12 +1,30 @@
 <h1>Edit a Blip</h1>
 
 <%= form_for @blip do|f| %>
+  <% if @blipHash.has_key? "title" %>
   Title:     <%= f.text_field :title%> <br /><br />
+  <% end %>
+
+  <% if @blipHash.has_key? "summary" %>
   Summary:   <%= f.text_area :summary%> <br /><br />
+  <% end %> 
+
+  <% if @blipHash.has_key? "link" %>
   Link:      <%= f.text_field :link %><br /><br />
+  <% end %>
+
+  <% if @blipHash.has_key? "time" %>
   Time:      <%= f.text_field :time %> <br /><br />
+  <% end %>
+
+  <% if @blipHash.has_key? "lat" %>
   Latitude:  <%= f.number_field(:lat, :step => 'any')%> <br /><br />
+  <% end %>
+
+  <% if @blipHash.has_key? "lng" %>
   Longitude: <%= f.number_field(:lng, :step => 'any')%> <br /><br />
+  <% end %>
+
   <%= f.submit %>
 <% end %>
 

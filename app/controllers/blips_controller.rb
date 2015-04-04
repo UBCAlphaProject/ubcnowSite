@@ -23,9 +23,9 @@ class BlipsController < ApplicationController
 
   def edit
     blipRequest = Curl.get("localhost:9000/api/v1/blip/#{params[:id]}")
-    blipHash = JSON.parse(blipRequest.body_str)
-    blipHash.delete "id"
-    @blip = Blip.new(blipHash)
+    @blipHash = JSON.parse(blipRequest.body_str)
+    @blipHash.delete "id"
+    @blip = Blip.new(@blipHash)
   end
 
   def update
