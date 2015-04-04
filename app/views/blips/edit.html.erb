@@ -1,4 +1,13 @@
-<h1>Blips#edit</h1>
-<p>Editing blips here</p>
+<h1>Edit a Blip</h1>
+
+<%= form_for @blip do|f| %>
+  Title:     <%= f.text_field :title%> <br /><br />
+  Summary:   <%= f.text_area :summary%> <br /><br />
+  Link:      <%= f.text_field :link %><br /><br />
+  Time:      <%= f.text_field :time %> <br /><br />
+  Latitude:  <%= f.number_field(:lat, :step => 'any')%> <br /><br />
+  Longitude: <%= f.number_field(:lng, :step => 'any')%> <br /><br />
+  <%= f.submit %>
+<% end %>
 
 <%= link_to "Back to Home" , root_path %>
