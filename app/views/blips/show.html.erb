@@ -1,4 +1,14 @@
-<h1>Blips#show</h1>
-<p>Details of single blip here</p>
+<h1><%= @blipHash["title"] %></h1>
+<h2><%= @blipHash["summary"]%></h1>
+<h3><%= @blipHash["address"] %></h1>
+<% if (@blipHash["lat"] != nil && @blipHash["lng"] != nil) %>
+	<h5><%= "Latitude: #{@blipHash["lat"]} Longitude: #{@blipHash["lng"]}" %></h1>
+<% end %>
+<h5><%= @blipHash["time"] %></h1>
+<br />
+<h4><%= link_to "Learn More" , @blipHash["link"] %></h1>
 
-<%= link_to "Back to Home" , root_path %>
+<br>
+<br>
+
+<%= link_to "Home", blips_path , :class => 'btn btn-default'%>

@@ -49,6 +49,8 @@ class BlipsController < ApplicationController
   end
 
   def show
+    blipRequest = Curl.get("localhost:9000/api/v1/blip/#{params[:id]}") # make a request for the blip that we will be editing
+    @blipHash = JSON.parse(blipRequest.body_str)                        # convert from JSON
   end
 
   def index
