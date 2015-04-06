@@ -19,12 +19,12 @@ class BlipsController < ApplicationController
       curl.headers['Api-Version'] = '2.2'
     end
 
-    redirect_to(:action => index)                                       # redirect to table with all blips
+    redirect_to(:action => :index)                                       # redirect to table with all blips
   end
 
   def edit
     blipRequest = Curl.get("localhost:9000/api/v1/blip/#{params[:id]}") # make a request for the blip that we will be editing
-    @blipHash = JSON.parse(blipRequest.body_str)                        # convert to JSON
+    @blipHash = JSON.parse(blipRequest.body_str)                        # convert from JSON
     @blipHash.delete "id"                                               # delete ID from the hash because blips do not have that field
     @blip = Blip.new(@blipHash)                                         # this will pre-populate the form
   end
@@ -45,13 +45,15 @@ class BlipsController < ApplicationController
       curl.headers['Api-Version'] = '2.2'
     end    
 
-    redirect_to(:action => index)                                       # redirect to table with all blips
+    redirect_to(:action => :index)                                       # redirect to table with all blips
   end
 
   def show
   end
 
   def index
+    blipsRequest = Curl.get("http://localhost:9000/api/v1/blip")         # make a request for the users blips (same group)
+    @blipsArray = JSON.parse(blipsRequest.body_str)                      # convert from JSON
   end
 
   def destroy

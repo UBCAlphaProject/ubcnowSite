@@ -43,3 +43,6 @@ gem 'curb'
 
 # Using json for simple to/from JSON conversion
 gem 'json'
+
+# Using bootstrap-sass for styling	
+gem 'bootstrap-sass', '~> 3.3.4'
