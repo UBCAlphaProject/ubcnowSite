@@ -7,8 +7,8 @@ class BlipsController < ApplicationController
     cleanParams = cleanHash(params[:blip])                              # get rid of all key-value pairs where the value is "" 
     newBlip = Blip.new(cleanParams)
     newBlip.gid = 1                                                     # TODO change from one to cookies[:gid]
-    newBlip.lat = newBlip.lat.to_f if newBlip.lat.is_a? String       # get rid of quotes
-    newBlip.lng = newBlip.lng.to_f if newBlip.lat.is_a? String       # get rid of quotes
+    newBlip.lat = newBlip.lat.to_f if newBlip.lat.is_a? String          # get rid of quotes
+    newBlip.lng = newBlip.lng.to_f if newBlip.lat.is_a? String          # get rid of quotes
     jsonBlip = newBlip.to_json                                          # convert to JSON
 
     # Make post request to server in the JSON format
@@ -30,7 +30,8 @@ class BlipsController < ApplicationController
   end
 
   def update
-    editedBlip = Blip.new(params[:blip])                                # get updated params from edit-form
+    cleanParams = cleanHash(params[:blip])                              # get rid of all key-value pairs where the value is "" 
+    editedBlip = Blip.new(cleanParams)                                  # get updated params from edit-form
     editedBlip.lat = editedBlip.lat.to_f if editedBlip.lat.is_a? String # get rid of quotes
     editedBlip.lng = editedBlip.lng.to_f if editedBlip.lng.is_a? String # get rid of quotes
 
