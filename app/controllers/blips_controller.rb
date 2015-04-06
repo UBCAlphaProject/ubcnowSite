@@ -1,13 +1,14 @@
 class BlipsController < ApplicationController
   def new
-    @blip = Blip.newBlip                                                # make a new blip
+    @blip = Blip.new                                                    # make a new blip
   end
 
   def create
-    newBlip = Blip.new(params[:blip])
+    cleanParams = cleanHash(params[:blip])                              # get rid of all key-value pairs where the value is "" 
+    newBlip = Blip.new(cleanParams)
     newBlip.gid = 1                                                     # TODO change from one to cookies[:gid]
-    newBlip.lat = newBlip.lat.to_i                                      # get rid of quotes
-    newBlip.lng = newBlip.lng.to_i                                      # get rid of quotes
+    newBlip.lat = newBlip.lat.to_f if newBlip.lat.is_a? String       # get rid of quotes
+    newBlip.lng = newBlip.lng.to_f if newBlip.lat.is_a? String       # get rid of quotes
     jsonBlip = newBlip.to_json                                          # convert to JSON
 
     # Make post request to server in the JSON format
@@ -30,8 +31,8 @@ class BlipsController < ApplicationController
 
   def update
     editedBlip = Blip.new(params[:blip])                                # get updated params from edit-form
-    editedBlip.lat = editedBlip.lat.to_f if editedBlip.lat.is_a? String # convert "lat" to lat (get rid of quotes)
-    editedBlip.lng = editedBlip.lng.to_f if editedBlip.lng.is_a? String # convert "lng" to lng (get rid of quotes)
+    editedBlip.lat = editedBlip.lat.to_f if editedBlip.lat.is_a? String # get rid of quotes
+    editedBlip.lng = editedBlip.lng.to_f if editedBlip.lng.is_a? String # get rid of quotes
 
     jsonBlip = editedBlip.to_json                                       # convert to JSON
 
