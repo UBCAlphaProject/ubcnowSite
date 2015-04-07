@@ -8,7 +8,7 @@ class BlipsController < ApplicationController
     newBlip = Blip.new(cleanParams)
     newBlip.gid = 1                                                     # TODO change from one to cookies[:gid]
     newBlip.lat = newBlip.lat.to_f if newBlip.lat.is_a? String          # get rid of quotes
-    newBlip.lng = newBlip.lng.to_f if newBlip.lat.is_a? String          # get rid of quotes
+    newBlip.lng = newBlip.lng.to_f if newBlip.lng.is_a? String          # get rid of quotes
     jsonBlip = newBlip.to_json                                          # convert to JSON
 
     # Make post request to server in the JSON format
