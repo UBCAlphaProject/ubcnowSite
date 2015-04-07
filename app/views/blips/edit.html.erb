@@ -1,19 +1,70 @@
-<h1>Edit a Blip</h1>
+<h1 style="text-align:center; font-weight: bold;">Edit Blip</h1>
 
-<%= form_for @blip , :url => {:action => "update"} , :html => {:method => 'put'} do|f| %>
-  Title:     <%= f.text_field :title%> <br /><br />
-  Summary:   <%= f.text_area :summary%> <br /><br />
-  Link:      <%= f.text_field :link %><br /><br />
-  Time:      <%= f.time_field :time %> <br /><br />
-  Latitude:  <%= f.number_field(:lat, :step => 'any')%> <br /><br />
-  Longitude: <%= f.number_field(:lng, :step => 'any')%> <br /><br />
-  <%= button_tag(type: 'submit', class: "btn btn-success btn-lg") do %>
- 	<i class="glyphicon glyphicon-floppy-disk"></i>&nbsp;Update Blip
-  <% end %>
+<%= form_for @blip , :url => {:action => "update"} , :html => {:method => 'put', class: 'form-horizontal'} do|f| %>
+  
+  <div class="field form-group">
+    <%= f.label :title, class: 'col-sm-1 control-label' %>
+    <div class="col-sm-10">
+      <%= f.text_field :title, class: 'form-control' %>
+    </div>
+  </div>
+
+  <div class="field form-group">
+    <%= f.label :summary, class: 'col-sm-1 control-label' %>
+    <div class="col-sm-10">
+      <%= f.text_area :summary, class: 'form-control' %>
+    </div>
+  </div>
+
+  <div class="field form-group">
+    <%= f.label :link, class: 'col-sm-1 control-label' %>
+    <div class="col-sm-10">
+      <%= f.text_field :link, class: 'form-control' %>
+    </div>
+  </div>
+
+  <div class="field form-group">
+    <%= f.label :time, class: 'col-sm-1 control-label' %>
+    <div class="col-sm-10">
+      <%= f.datetime_field :time,  :include_blank => true , class: 'form-control' %>
+    </div>
+  </div>
+
+  <div class="field form-group">
+    <%= f.label :address, class: 'col-sm-1 control-label' %>
+    <div class="col-sm-10">
+      <%= f.text_field :address, class: 'form-control' %>
+    </div>
+  </div>
+
+  <div class="field form-group">
+    <%= f.label :lat, class: 'col-sm-1 control-label' %>
+    <div class="col-sm-10">
+      <%= f.number_field :lat, :step => 'any',  class: 'form-control' %>
+    </div>
+  </div>
+
+  <div class="field form-group">
+    <%= f.label :lng, class: 'col-sm-1 control-label' %>
+    <div class="col-sm-10">
+      <%= f.number_field :lng, :step => 'any',  class: 'form-control' %>
+    </div>
+  </div>
+
+  <div class="actions form-group">
+    <div class="col-sm-offset-1 col-sm-10">  
+ 	  <%= button_tag(type: 'submit', class: "btn btn-success btn-lg") do %>
+ 		<i class="glyphicon glyphicon-floppy-disk"></i>&nbsp;Update Blip
+  	  <% end %>
+  	</div>
+  </div> 
+
+
 <% end %>
 
 <br />
 
-<%= link_to root_path, class: "btn btn-primary btn-lg" do%>
+<%= link_to root_path, class: "btn btn-primary btn-lg col-sm-offset-1" do%>
 	<i class="glyphicon glyphicon-home"></i> &nbsp;Home
 <% end %>
+
