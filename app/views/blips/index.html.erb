@@ -28,7 +28,7 @@
             <td>
               <%= link_to "Show", {:action => "show" , :id => blipHash["id"]}, class: "btn btn-small" %>
               <%= link_to "Edit", {:action => "edit" , :id => blipHash["id"]}, class: "btn btn-small" %>
-              <%# <%= link_to "Delete", blip, method: :delete, data: { confirm: "You sure?" } , class: "btn btn-small"%>
+              <%= link_to "Delete", {:action => "destroy", :id => blipHash["id"]}, method: :delete, data: {confirm: "Are you sure?"}, class: "btn btn-small" %>
             </td>
           </tr>
       <% end %>

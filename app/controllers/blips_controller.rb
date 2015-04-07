@@ -59,5 +59,7 @@ class BlipsController < ApplicationController
   end
 
   def destroy
+    Curl::Easy.http_delete("localhost:9000/api/v1/blip/#{params[:id]}")  # make a request to delete that blip
+    redirect_to(:action => :index)                                       # go back to the index page
   end
 end
