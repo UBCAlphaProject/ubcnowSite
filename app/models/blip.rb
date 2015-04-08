@@ -6,6 +6,8 @@ class Blip
 
   attr_accessor :gid, :title, :summary, :link, :time, :address, :lat, :lng
 
+  validates_presence_of :title
+
   # Constructor which will take in a hash and set all the respective 
   # attributes 
   def initialize(attributes = {})

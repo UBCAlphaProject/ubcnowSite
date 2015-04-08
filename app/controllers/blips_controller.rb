@@ -6,6 +6,16 @@ class BlipsController < ApplicationController
   def create
     cleanParams = cleanHash(params[:blip])                              # get rid of all key-value pairs where the value is "" 
     newBlip = Blip.new(cleanParams)
+
+    # Make sure that the blip is valid, otherwise go back to the new view 
+    # Current validations:
+    #  - Title exists
+    unless newBlip.valid? 
+      redirect_to(action: :new);
+      return
+    end
+
+
     newBlip.gid = 1                                                     # TODO change from one to cookies[:gid]
     newBlip.lat = newBlip.lat.to_f if newBlip.lat.is_a? String          # get rid of quotes
     newBlip.lng = newBlip.lng.to_f if newBlip.lng.is_a? String          # get rid of quotes
