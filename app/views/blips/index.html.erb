@@ -17,13 +17,13 @@
   <% unless @blipsArray.empty? %>
       <% @blipsArray.each do |blipHash| %>
           <tr>
-            <td><div style="height:60px; overflow:auto"><%= blipHash["title"]   %></div></td>
-            <td><div style="height:60px; overflow:auto"><%= blipHash["summary"]   %></div></td>
-            <td><div style="height:60px; overflow:auto"><%= blipHash["link"]   %></div></td>
-            <td><div style="height:60px; overflow:auto"><%= blipHash["time"]   %></div></td>
-            <td><div style="height:60px; overflow:auto"><%= blipHash["address"]   %></div></td>
-            <td><div style="height:60px; overflow:auto"><%= blipHash["lat"]   %></div></td>
-            <td><div style="height:60px; overflow:auto"><%= blipHash["lng"]   %></div></td>
+            <td><div style="height:60px; overflow:auto"><%= blipHash["title"]                            %></div></td>
+            <td><div style="height:60px; overflow:auto"><%= blipHash["summary"]                          %></div></td>
+            <td><div style="height:60px; overflow:hidden"><%= link_to blipHash["link"],blipHash["link"] if blipHash["link"] != nil %></div></td>
+            <td><div style="height:60px; overflow:auto"><%= blipHash["time"]                             %></div></td>
+            <td><div style="height:60px; overflow:auto"><%= blipHash["address"]                          %></div></td>
+            <td><div style="height:60px; overflow:auto"><%= blipHash["lat"]                              %></div></td>
+            <td><div style="height:60px; overflow:auto"><%= blipHash["lng"]                              %></div></td>
 
             <td>
               <%= link_to "Show", {:action => "show" , :id => blipHash["id"]}, class: "btn btn-small" %>
