@@ -14,3 +14,12 @@
 
 @import "bootstrap-sprockets";
 @import "bootstrap";
+
+body {
+    background-image:url('/assets/alpha_project_logo.jpg');
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+}
+html {
+    min-height: 100%
+}
