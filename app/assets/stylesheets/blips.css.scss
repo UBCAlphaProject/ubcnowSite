@@ -1,3 +1,22 @@
-// Place all the styles related to the blips controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+//--- Titles on INDEX, EDIT, and NEW -----
+.title-of-page {
+	text-align: center; 
+	font-weight: bold;
+}
+//----------------------------------------
+
+
+//------ Table on INDEX page --------
+#fixed-table {
+	  table-layout: fixed;
+	  word-wrap: break-word;
+}
+//-----------------------------------
+
+
+//------Table Data on INDEX page ----
+.fixed-table-data {
+	height:60px;
+	overflow:auto;
+}
+//------------------------------------

@@ -10,6 +10,8 @@
  * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
  * file per style scope.
  *
+ *= require_tree .
+ *= require_self
  */
 
 @import "bootstrap-sprockets";
@@ -35,6 +37,7 @@
 		#bottom { bottom: 0; }
 //----------------------------------
 
+
 //----------- LOGO (bottom right) -----------------
 body {
     background-image:url('/assets/alpha_logo.jpg');
@@ -44,5 +47,12 @@ body {
 
 html {
     min-height: 100%
+}
+//------------------------------------------------
+
+
+//--------------- Outermost Div ------------------
+#outermost-div {
+	margin: 30px 30px 50px 30px;
 }
 //------------------------------------------------
