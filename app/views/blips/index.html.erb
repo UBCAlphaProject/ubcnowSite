@@ -1,29 +1,29 @@
 <h1 style="text-align:center; font-weight: bold;">Your Blips</h1>
 
-<table class="table table-striped table-bordered table-condensed">
+<table class="table table-striped table-bordered table-condensed" style="table-layout: fixed; word-wrap: break-word;">
   <thead>
   <tr>
-    <th colspan="1">Title</th>
-    <th colspan="1">Summary</th>
-    <th colspan="1">Link</th>
-    <th colspan="1">Time</th>
-    <th colspan="1">Address</th>
-    <th colspan="1">Latitude</th>
-    <th colspan="1">Longitude</th>
-    <th colspan="1">Actions</th>
+    <th class="col-md-2">Title</th>
+    <th class="col-md-3">Summary</th>
+    <th class="col-md-1">Link</th>
+    <th class="col-md-1">Time</th>
+    <th class="col-md-1">Address</th>
+    <th class="col-md-1">Latitude</th>
+    <th class="col-md-1">Longitude</th>
+    <th class="col-md-2">Actions</th>
   </tr>
   </thead>
   <tbody>
   <% unless @blipsArray.empty? %>
       <% @blipsArray.each do |blipHash| %>
           <tr>
-            <td><%= blipHash["title"]   %></td>
-            <td><%= blipHash["summary"] %></td>
-            <td><%= blipHash["link"]    %></td>
-            <td><%= blipHash["time"]    %></td>
-            <td><%= blipHash["address"] %></td>
-            <td><%= blipHash["lat"]     %></td>
-            <td><%= blipHash["lng"]     %></td>
+            <td><div style="height:60px; overflow:auto"><%= blipHash["title"]   %></div></td>
+            <td><div style="height:60px; overflow:auto"><%= blipHash["summary"]   %></div></td>
+            <td><div style="height:60px; overflow:auto"><%= blipHash["link"]   %></div></td>
+            <td><div style="height:60px; overflow:auto"><%= blipHash["time"]   %></div></td>
+            <td><div style="height:60px; overflow:auto"><%= blipHash["address"]   %></div></td>
+            <td><div style="height:60px; overflow:auto"><%= blipHash["lat"]   %></div></td>
+            <td><div style="height:60px; overflow:auto"><%= blipHash["lng"]   %></div></td>
 
             <td>
               <%= link_to "Show", {:action => "show" , :id => blipHash["id"]}, class: "btn btn-small" %>
