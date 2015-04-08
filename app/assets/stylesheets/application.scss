@@ -15,11 +15,34 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
+//------------ BORDER --------------
+#top, #bottom, #left, #right {
+	background: #06627E;
+	position: fixed;
+	}
+	#left, #right {
+		top: 0; bottom: 0;
+		width: 15px;
+		}
+		#left { left: 0; }
+		#right { right: 0; }
+		
+	#top, #bottom {
+		left: 0; right: 0;
+		height: 15px;
+		}
+		#top { top: 0; }
+		#bottom { bottom: 0; }
+//----------------------------------
+
+//----------- LOGO (bottom right) -----------------
 body {
-    background-image:url('/assets/alpha_project_logo.jpg');
-    background-repeat: no-repeat;
-    background-size: 100% 100%;
+    background-image:url('/assets/alpha_logo.jpg');
+    background-repeat: no-repeat; 
+    background-position: right 30px bottom 20px;
 }
+
 html {
     min-height: 100%
 }
+//------------------------------------------------
