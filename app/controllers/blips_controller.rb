@@ -12,7 +12,7 @@ class BlipsController < ApplicationController
     jsonBlip = newBlip.to_json                                          # convert to JSON
 
     # Make post request to server in the JSON format
-    c = Curl::Easy.http_post("localhost:9000/api/v1/blip", jsonBlip   
+    c = Curl::Easy.http_post("#{HOST}:#{PORT_NUMBER}/api/v1/blip", jsonBlip   
     ) do |curl|
       curl.headers['Accept'] = 'application/json'
       curl.headers['Content-Type'] = 'application/json'
@@ -23,7 +23,7 @@ class BlipsController < ApplicationController
   end
 
   def edit
-    blipRequest = Curl.get("localhost:9000/api/v1/blip/#{params[:id]}") # make a request for the blip that we will be editing
+    blipRequest = Curl.get("#{HOST}:#{PORT_NUMBER}/api/v1/blip/#{params[:id]}") # make a request for the blip that we will be editing
     @blipHash = JSON.parse(blipRequest.body_str)                        # convert from JSON
     @blipHash.delete "id"                                               # delete ID from the hash because blips do not have that field
     @blip = Blip.new(@blipHash)                                         # this will pre-populate the form
@@ -38,7 +38,7 @@ class BlipsController < ApplicationController
     jsonBlip = editedBlip.to_json                                       # convert to JSON
 
     # Make put request to server in JSON format
-    c = Curl::Easy.http_put("localhost:9000/api/v1/blip/#{params[:id]}", jsonBlip   
+    c = Curl::Easy.http_put("#{HOST}:#{PORT_NUMBER}/api/v1/blip/#{params[:id]}", jsonBlip   
     ) do |curl|
       curl.headers['Accept'] = 'application/json'
       curl.headers['Content-Type'] = 'application/json'
@@ -49,17 +49,17 @@ class BlipsController < ApplicationController
   end
 
   def show
-    blipRequest = Curl.get("localhost:9000/api/v1/blip/#{params[:id]}") # make a request for the blip that we will be editing
+  blipRequest = Curl.get("#{HOST}:#{PORT_NUMBER}/api/v1/blip/#{params[:id]}") # make a request for the blip that we will be editing
     @blipHash = JSON.parse(blipRequest.body_str)                        # convert from JSON
   end
 
   def index
-    blipsRequest = Curl.get("http://localhost:9000/api/v1/blip")         # make a request for the users blips (same group)
+    blipsRequest = Curl.get("http://#{HOST}:#{PORT_NUMBER}/api/v1/blip")         # make a request for the users blips (same group)
     @blipsArray = JSON.parse(blipsRequest.body_str)                      # convert from JSON
   end
 
   def destroy
-    Curl::Easy.http_delete("localhost:9000/api/v1/blip/#{params[:id]}")  # make a request to delete that blip
-    redirect_to(:action => :index)                                       # go back to the index page
+    Curl::Easy.http_delete("#{HOST}:#{PORT_NUMBER}/api/v1/blip/#{params[:id]}")  # make a request to delete that blip
+    redirect_to(:action => :index)                                       # go back to the index pagerails
   end
 end
