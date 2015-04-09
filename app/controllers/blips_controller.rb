@@ -8,10 +8,10 @@ class BlipsController < ApplicationController
     newBlip = Blip.new(cleanParams)
 
     # Make sure that the blip is valid, otherwise go back to the new view 
-    # Current validations:
-    #  - Title exists
+    # and render the errors. @blip will contain the errors
     unless newBlip.valid? 
-      redirect_to(action: :new);
+      @blip = newBlip
+      render :action => 'new'
       return
     end
 
