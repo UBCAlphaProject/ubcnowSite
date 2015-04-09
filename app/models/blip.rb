@@ -4,7 +4,7 @@ class Blip
   include ActiveModel::Conversion
   extend ActiveModel::Naming
 
-  attr_accessor :gid, :title, :summary, :link, :time, :address, :lat, :lng
+  attr_accessor :gid, :title, :summary, :link, :startTime, :endTime, :address, :lat, :lng
 
   validates_presence_of :title
 

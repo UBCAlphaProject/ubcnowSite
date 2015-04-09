@@ -6,7 +6,9 @@
 	<h5><%= "Latitude: #{@blipHash["lat"]} Longitude: #{@blipHash["lng"]}" %></h1>
 <% end %>
 
-<h5><%= @blipHash["time"] %></h1>
+<h3><%= @blipHash["startTime"] %></h3>
+<h3><%= @blipHash["endTime"] %></h3>
+
 <br />
 
 <% if @blipHash["link"] != nil %>

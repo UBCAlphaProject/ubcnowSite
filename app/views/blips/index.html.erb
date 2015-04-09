@@ -6,7 +6,8 @@
     <th class="col-md-2">Title</th>
     <th class="col-md-3">Summary</th>
     <th class="col-md-1">Link</th>
-    <th class="col-md-1">Time</th>
+    <th class="col-md-1">Start Time</th>
+    <th class="col-md-1">End Time</th>
     <th class="col-md-1">Address</th>
     <th class="col-md-1">Latitude</th>
     <th class="col-md-1">Longitude</th>
@@ -20,7 +21,8 @@
             <td><div class="fixed-table-data"><%= blipHash["title"]                                                                               %></div></td>
             <td><div class="fixed-table-data"><%= blipHash["summary"]                                                                             %></div></td>
             <td><div class="fixed-table-data" style="overflow:hidden"><%= link_to blipHash["link"],blipHash["link"] if blipHash["link"] != nil    %></div></td>
-            <td><div class="fixed-table-data"><%= blipHash["time"]                                                                                %></div></td>
+            <td><div class="fixed-table-data"><%= blipHash["startTime"]                                                                           %></div></td>
+            <td><div class="fixed-table-data"><%= blipHash["endTime"]                                                                             %></div></td>
             <td><div class="fixed-table-data"><%= blipHash["address"]                                                                             %></div></td>
             <td><div class="fixed-table-data"><%= blipHash["lat"]                                                                                 %></div></td>
             <td><div class="fixed-table-data"><%= blipHash["lng"]                                                                                 %></div></td>
