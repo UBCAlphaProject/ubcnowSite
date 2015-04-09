@@ -21,6 +21,7 @@
 #top, #bottom, #left, #right {
 	background: #06627E;
 	position: fixed;
+	z-index: 1000; 											// Border should be on top of everything 
 	}
 	#left, #right {
 		top: 0; bottom: 0;
