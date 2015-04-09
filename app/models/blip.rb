@@ -6,7 +6,16 @@ class Blip
 
   attr_accessor :gid, :title, :summary, :link, :startTime, :endTime, :address, :lat, :lng
 
-  validates_presence_of :title
+  # TODO MAKE SURE VALIDATIONS MATCH FINAL MODEL 
+
+  validates :title, presence: true
+
+  validates :title,       length: {maximum: 255}
+  validates :summary,     length: {maximum: 255}
+  validates :link,        length: {maximum: 255}
+  validates :startTime,   length: {maximum: 255}
+  validates :endTime,     length: {maximum: 255}
+  validates :address,     length: {maximum: 255}
 
   # Constructor which will take in a hash and set all the respective 
   # attributes 
