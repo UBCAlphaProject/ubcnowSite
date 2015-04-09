@@ -46,6 +46,14 @@ class BlipsController < ApplicationController
     cleanParams = cleanHash(params[:blip])                                                 # get rid of all key-value pairs where the value is "" 
     editedBlip = Blip.new(cleanParams)                                                     # get updated params from edit-form
 
+    # Make sure that the blip is valid, otherwise go back to the edit view 
+    # and render the errors. @blip will contain the errors
+    unless editedBlip.valid? 
+      @blip = editedBlip
+      render :action => 'edit'
+      return
+    end
+
     editedBlip.lat = editedBlip.lat.to_f if editedBlip.lat.is_a? String                    # get rid of quotes
     editedBlip.lng = editedBlip.lng.to_f if editedBlip.lng.is_a? String                    # get rid of quotes
     editedBlip.startTime = editedBlip.startTime.to_i if editedBlip.startTime.is_a? String  # get rid of quotes TODO TIME FORMAT FIX
