@@ -1,4 +1,8 @@
-class Blip < ActiveRecord::Base
+class Blip
+  # These includes/extends are needed for form_for to work 
+  include ActiveModel::Validations
+  include ActiveModel::Conversion
+  extend ActiveModel::Naming
 
   attr_accessor :gid, :title, :summary, :link, :startTime, :endTime, :address, :lat, :lng
 
