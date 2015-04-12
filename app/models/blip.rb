@@ -1,4 +1,4 @@
-class Blip 
+class Blip < ActiveRecord::Base
   # These includes/extends are needed for form_for to work 
   include ActiveModel::Validations
   include ActiveModel::Conversion
