@@ -13,14 +13,25 @@ class BlipsController < ApplicationController
       # have already gotten rid of all the time tags and there is no need to do 
       # anything. On the other hand, if it was valid and had a time, then all the time 
       # tags must be removed and an epoch time must be added
-      if(cleanParams.has_key?("startTime(1i)"))                                           # check if it had a time
+      if(cleanParams.has_key?("startTime(1i)"))                                           # check if it had a startTime
         cleanParams[:startTime] = getEpoch(cleanParams, "startTime")                      # set the epoch start time
-        cleanParams[:endTime]   = getEpoch(cleanParams, "endTime")                        # set the epoch end time
-        cleanParams = removeTimeTags(cleanParams)                                         # get rid of all time tags from datetime_select
+        cleanParams = removeTimeTags(cleanParams, "startTime")                            # get rid of all time tags for startTime
       end
 
+      if(cleanParams.has_key?("endTime(1i)"))                                             # check if it had an endTime
+        cleanParams[:endTime]   = getEpoch(cleanParams, "endTime")                        # set the epoch endTime
+        cleanParams = removeTimeTags(cleanParams,"endTime")                               # get rid of all time tags for endTime
+      end
     else
-      # TODO IMPLEMENT INVALID TIME 
+      cleanParams = removeTimeTags(params[:blip], "startTime")
+      cleanParams = removeTimeTags(params[:blip], "endTime")
+      cleanParams = cleanHash(cleanParams)
+      @blip = Blip.new(cleanParams)
+      @blip.valid?
+      @blip.errors[:endTime] = "must be left blank or filled completely"
+      @blip.errors[:startTime] = "must be left blank or filled completely"
+      render :action => "new"
+      return
     end
 
     newBlip = Blip.new(cleanParams)                                                       # Create the blip to check for validations / convert to json
@@ -29,6 +40,8 @@ class BlipsController < ApplicationController
     # go back to the new view and render the errors. @blip will contain the errors
     unless newBlip.valid? 
       @blip = newBlip
+      @blip.startTime = Time.at(@blip.startTime / 1000) unless @blip.startTime == nil
+      @blip.endTime = Time.at(@blip.endTime / 1000) unless @blip.endTime == nil
       render :action => 'new'
       return
     end
