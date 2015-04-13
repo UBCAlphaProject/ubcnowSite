@@ -4,10 +4,13 @@ class BlipsController < ApplicationController
   end
 
   def create
+    validStartTime = validTimeHashHelper(params[:blip], "startTime")
+    validEndTime   = validTimeHashHelper(params[:blip], "endTime")
+
     # Time Validity must be checked seperately: 
     # If the start and end times are valid, get rid of the datetime_select time tags
     # and put in an epoch time, if it isnt valid render the form with an error message
-    if(validTimes(params[:blip])) 
+    if(validStartTime && validEndTime) 
       cleanParams = cleanHash(params[:blip])                                              # get rid of all key-value pairs where the value is "" 
       # If it was valid but all the values were "", then the cleanHash() would 
       # have already gotten rid of all the time tags and there is no need to do 
@@ -23,13 +26,25 @@ class BlipsController < ApplicationController
         cleanParams = removeTimeTags(cleanParams,"endTime")                               # get rid of all time tags for endTime
       end
     else
-      cleanParams = removeTimeTags(params[:blip], "startTime")
-      cleanParams = removeTimeTags(params[:blip], "endTime")
-      cleanParams = cleanHash(cleanParams)
+      cleanParams = cleanHash(params[:blip])                                              # get rid of all key-value pairs where the value is "" 
+
+      if(validStartTime && cleanParams.has_key?("startTime(1i)")) 
+        cleanParams["startTime"] = Time.at(getEpoch(cleanParams, "startTime") / 1000)
+      end
+
+      if(validEndTime && cleanParams.has_key?("endTime(1i)"))
+        cleanParams["endTime"] = Time.at(getEpoch(cleanParams, "endTime") / 1000)
+      end
+
+      cleanParams = removeTimeTags(cleanParams, "startTime")
+      cleanParams = removeTimeTags(cleanParams, "endTime")
+
+
       @blip = Blip.new(cleanParams)
       @blip.valid?
-      @blip.errors[:endTime] = "must be left blank or filled completely"
-      @blip.errors[:startTime] = "must be left blank or filled completely"
+      @blip.errors[:startTime] = "must be left blank or filled completely" unless validStartTime
+      @blip.errors[:endTime]   = "must be left blank or filled completely" unless validEndTime 
+      
       render :action => "new"
       return
     end

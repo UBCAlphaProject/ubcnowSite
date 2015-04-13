@@ -18,18 +18,12 @@ class ApplicationController < ActionController::Base
 
   # Make sure the start and end times are valid
   # Returns: Boolean representing validity of both times 
-  def validTimes(blipHash)
-    return validTime(blipHash["startTime(1i)"] ,
-                     blipHash["startTime(2i)"] , 
-                     blipHash["startTime(3i)"] , 
-                     blipHash["startTime(4i)"] ,
-                     blipHash["startTime(5i)"]) &&
-
-           validTime(blipHash["endTime(1i)"] ,
-                     blipHash["endTime(2i)"] , 
-                     blipHash["endTime(3i)"] , 
-                     blipHash["endTime(4i)"] ,
-                     blipHash["endTime(5i)"]) 
+  def validTimeHashHelper(blipHash, tagName)
+    return validTime(blipHash["#{tagName}(1i)"] ,
+                     blipHash["#{tagName}(2i)"] , 
+                     blipHash["#{tagName}(3i)"] , 
+                     blipHash["#{tagName}(4i)"] ,
+                     blipHash["#{tagName}(5i)"])
   end 
 
   # Make sure the time is valid:
