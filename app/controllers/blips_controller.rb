@@ -1,14 +1,32 @@
 class BlipsController < ApplicationController
   def new
-    @blip = Blip.new                                                                     # make a new blip
+    @blip = Blip.new                                                                      # make a new blip
   end
 
   def create
-    cleanParams = cleanHash(params[:blip])                                               # get rid of all key-value pairs where the value is "" 
-    newBlip = Blip.new(cleanParams)
+    # Time Validity must be checked seperately: 
+    # If the start and end times are valid, get rid of the datetime_select time tags
+    # and put in an epoch time, if it isnt valid render the form with an error message
+    if(validTimes(params[:blip])) 
+      cleanParams = cleanHash(params[:blip])                                              # get rid of all key-value pairs where the value is "" 
+      # If it was valid but all the values were "", then the cleanHash() would 
+      # have already gotten rid of all the time tags and there is no need to do 
+      # anything. On the other hand, if it was valid and had a time, then all the time 
+      # tags must be removed and an epoch time must be added
+      if(cleanParams.has_key?("startTime(1i)"))                                           # check if it had a time
+        cleanParams[:startTime] = getEpoch(cleanParams, "startTime")                      # set the epoch start time
+        cleanParams[:endTime]   = getEpoch(cleanParams, "endTime")                        # set the epoch end time
+        cleanParams = removeTimeTags(cleanParams)                                         # get rid of all time tags from datetime_select
+      end
 
-    # Make sure that the blip is valid, otherwise go back to the new view 
-    # and render the errors. @blip will contain the errors
+    else
+      # TODO IMPLEMENT INVALID TIME 
+    end
+
+    newBlip = Blip.new(cleanParams)                                                       # Create the blip to check for validations / convert to json
+
+    # Make sure that the blip is valid (checks everything but time), otherwise 
+    # go back to the new view and render the errors. @blip will contain the errors
     unless newBlip.valid? 
       @blip = newBlip
       render :action => 'new'
@@ -19,8 +37,6 @@ class BlipsController < ApplicationController
     newBlip.gid = 1                                                                       # TODO change from one to cookies[:gid]
     newBlip.lat = newBlip.lat.to_f if newBlip.lat.is_a? String                            # get rid of quotes
     newBlip.lng = newBlip.lng.to_f if newBlip.lng.is_a? String                            # get rid of quotes
-    newBlip.startTime = newBlip.startTime.to_i if newBlip.startTime.is_a? String          # get rid of quotes TODO TIME FORMAT FIX
-    newBlip.endTime = newBlip.endTime.to_i if newBlip.endTime.is_a? String                # get rid of quotes TODO TIME FORMAT FIX
         
     jsonBlip = newBlip.to_json                                                            # convert to JSON
 
