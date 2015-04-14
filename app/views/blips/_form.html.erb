@@ -1,0 +1,90 @@
+<%= f.error_messages %>
+  
+  <div class="field form-group">
+    <%= f.label :title, class: 'col-sm-1 control-label' %>
+    <div class="col-sm-10">
+      <% if @blip.errors[:title].present? %> 
+        <%= f.text_field :title, class: 'form-control error-red' %>
+      <% else %>
+        <%= f.text_field :title, class: 'form-control' %>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="field form-group">
+    <%= f.label :summary, class: 'col-sm-1 control-label' %>
+    <div class="col-sm-10">
+      <% if @blip.errors[:summary].present? %>
+        <%= f.text_area :summary, class: 'form-control error-red' %>
+      <% else %>
+        <%= f.text_area :summary, class: 'form-control' %>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="field form-group">
+    <%= f.label :link, class: 'col-sm-1 control-label' %>
+    <div class="col-sm-10">
+      <% if @blip.errors[:link].present? %>
+        <%= f.text_field :link, class: 'form-control error-red' %>
+      <% else %>
+        <%= f.text_field :link, class: 'form-control' %>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="field form-group">
+    <%= f.label :startTime, class: 'col-sm-1 control-label' %>
+    <div class="col-sm-10">
+      <% if @blip.errors[:startTime].present? %>
+        <div class="error-red-time"><%= f.datetime_select :startTime,  :include_blank => true , class: 'form-control' %></div>
+      <% else %>
+        <%= f.datetime_select :startTime,  :include_blank => true , class: 'form-control' %>
+      <% end %>  
+    </div>
+  </div>
+
+  <div class="field form-group">
+    <%= f.label :endTime, class: 'col-sm-1 control-label' %>
+    <div class="col-sm-10">
+      <% if @blip.errors[:endTime].present? %>
+        <div class="error-red-time"><%= f.datetime_select :endTime,  :include_blank => true , class: 'form-control' %></div>
+      <% else %>
+        <%= f.datetime_select :endTime,  :include_blank => true , class: 'form-control' %>
+      <% end %>
+    </div>
+  </div>
+
+
+  <div class="field form-group">
+    <%= f.label :address, class: 'col-sm-1 control-label' %>
+    <div class="col-sm-10">
+      <% if @blip.errors[:address].present? %>
+        <%= f.text_field :address, class: 'form-control error-red' %>
+      <% else %>
+        <%= f.text_field :address, class: 'form-control' %>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="field form-group">
+    <%= f.label :lat, class: 'col-sm-1 control-label' %>
+    <div class="col-sm-10">
+      <% if @blip.errors[:lat].present? %>
+        <%= f.number_field :lat, :step => 'any',  class: 'form-control error-red' %>
+      <% else %>
+        <%= f.number_field :lat, :step => 'any',  class: 'form-control' %>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="field form-group">
+    <%= f.label :lng, class: 'col-sm-1 control-label' %>
+    <div class="col-sm-10">
+      <% if @blip.errors[:lng].present? %>
+        <%= f.number_field :lng, :step => 'any',  class: 'form-control error-red' %>
+      <% else %>
+        <%= f.number_field :lng, :step => 'any',  class: 'form-control' %>
+      <% end %>
+    </div>
+  </div>
