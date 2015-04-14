@@ -26,30 +26,34 @@ class BlipsController < ApplicationController
         cleanParams = removeTimeTags(cleanParams,"endTime")                               # get rid of all time tags for endTime
       end
     else
+      ## If both times not valid, save valid datetime if one is valid, remove time tags, go
+      ## back to the new form. Invalid datetimes will be erased and highlighted in red
+      
       cleanParams = cleanHash(params[:blip])                                              # get rid of all key-value pairs where the value is "" 
 
+      # If the times are valid and not nil then remember them so the datetime 
+      # auto-fills to their values 
       if(validStartTime && cleanParams.has_key?("startTime(1i)")) 
         cleanParams["startTime"] = Time.at(getEpoch(cleanParams, "startTime") / 1000)
       end
-
       if(validEndTime && cleanParams.has_key?("endTime(1i)"))
         cleanParams["endTime"] = Time.at(getEpoch(cleanParams, "endTime") / 1000)
       end
 
+      # Get rid of the time tags (no exceptions thrown if tags not there)
       cleanParams = removeTimeTags(cleanParams, "startTime")
       cleanParams = removeTimeTags(cleanParams, "endTime")
 
-
-      @blip = Blip.new(cleanParams)
-      @blip.valid?
-      @blip.errors[:startTime] = "must be left blank or filled completely" unless validStartTime
-      @blip.errors[:endTime]   = "must be left blank or filled completely" unless validEndTime 
+      @blip = Blip.new(cleanParams)                                                                  # create the blip 
+      @blip.valid?                                                                                   # generate all the other error messages as well
+      @blip.errors[:startTime] = "must be left blank or filled completely" unless validStartTime     # if the start time is wrong add the error messages
+      @blip.errors[:endTime]   = "must be left blank or filled completely" unless validEndTime       # if the end time is wrong add the error messages
       
-      render :action => "new"
+      render :action => "new"                                                                        # render the new form
       return
     end
 
-    newBlip = Blip.new(cleanParams)                                                       # Create the blip to check for validations / convert to json
+    newBlip = Blip.new(cleanParams)                                                                  # create the blip to check for validations / convert to json
 
     # Make sure that the blip is valid (checks everything but time), otherwise 
     # go back to the new view and render the errors. @blip will contain the errors
