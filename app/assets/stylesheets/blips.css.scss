@@ -30,8 +30,12 @@
 	margin: 0px 0px 30px 0px;
 }
 
-.form-button {
+.table-button {
 	margin: 30px 30px 30px 30px;
+}
+
+.form-button {
+	margin: 20px 0px 10px 0px;
 }
 
 .error-red {
@@ -39,4 +43,8 @@
 	border-color:  #ff0000   !important;
 	border-width: 3px !important;
 	display: inline-block;
+}
+
+.form-field {
+	margin: 0px 0px 20px 0px;
 }
