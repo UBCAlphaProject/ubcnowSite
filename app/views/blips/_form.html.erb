@@ -2,7 +2,11 @@
 
 <div class="row"> 
   <div class="col-md-6">
-    <%= f.label :title, "Title"%>
+    <% if @blip.errors[:title].present? %>
+      <div class="form-label-error"> Title <%= @blip.errors[:title].first %> </div>
+    <% else %>
+      <div class="form-label">Title</div>
+    <% end %>
     <div class="form-field">
       <% if @blip.errors[:title].present? %> 
         <%= f.text_field :title, class: 'form-control error-red' %>
@@ -11,7 +15,11 @@
       <% end %>
     </div>
 
-    <%= f.label :link, "Link"%>
+    <% if @blip.errors[:link].present? %>
+      <div class="form-label-error"> Link <%= @blip.errors[:link].first %> </div>
+    <% else %>
+      <div class="form-label"> Link </div>
+    <% end %>
     <div class="form-field">
       <% if @blip.errors[:link].present? %>
         <%= f.text_field :link, class: 'form-control error-red' %>
@@ -22,7 +30,11 @@
 
     <div class="row">
       <div class="col-md-6">
-        <%= f.label :startTime, "Start Time"%>
+        <% if @blip.errors[:startTime].present? %>
+          <div class="form-label-error"> Start Time <%= @blip.errors[:startTime].first %> </div>
+        <% else %>
+          <div class="form-label">Start Time</div>
+        <% end %>
         <div class="form-field">
           <% if @blip.errors[:startTime].present? %>
             <div class="error-red"><%= f.datetime_select :startTime,  :include_blank => true , start_year: Date.today.year , end_year: Date.today.year + 5 , class: 'form-control' %></div>
@@ -34,7 +46,11 @@
 
       <div class="col-md-6">
         <div style="float:right">
-          <%= f.label :endTime, "End Time"%>
+          <% if @blip.errors[:endTime].present? %>
+            <div class="form-label-error"> End Time <%= @blip.errors[:endTime].first %> </div>
+          <% else %>
+            <div class="form-label">End Time</div>
+          <% end %>
           <div class="form-field">
             <% if @blip.errors[:endTime].present? %>
               <div class="error-red"><%= f.datetime_select :endTime,  :include_blank => true , start_year: Date.today.year , end_year: Date.today.year + 5 , class: 'form-control' %></div>
@@ -48,7 +64,11 @@
   </div>
 
   <div class="col-md-6">
-    <%= f.label :summary, "Summary"%>
+    <% if @blip.errors[:summary].present? %>
+      <div class="form-label-error"> Summary <%= @blip.errors[:summary].first %> </div>
+    <% else %>
+      <div class="form-label">Summary</div>
+    <% end %>
     <div class="form-field">
       <% if @blip.errors[:summary].present? %>
         <%= f.text_area :summary, rows: "8", class: 'form-control error-red form-text-area' %>
@@ -62,7 +82,11 @@
 <div class="row">
 
   <div class="col-md-6"> 
-    <%= f.label :address, "Address"%>
+    <% if @blip.errors[:address].present? %>
+      <div class="form-label-error"> Address <%= @blip.errors[:address].first %> </div>
+    <% else %>
+      <div class="form-label">Address</div>
+    <% end %>
     <div class="form-field">
       <% if @blip.errors[:address].present? %>
         <%= f.text_field :address, class: 'form-control error-red' %>
@@ -74,7 +98,11 @@
 
     
   <div class="col-md-3">
-    <%= f.label :lat, "Latitude"%>
+    <% if @blip.errors[:lat].present? %>
+      <div class="form-label-error"> Latitude <%= @blip.errors[:lat].first %> </div>
+    <% else %>
+      <div class="form-label">Latitude</div>
+    <% end %>
     <div class="form-field" style="margin: 0px 0px 0px 0px">
       <% if @blip.errors[:lat].present? %>
         <%= f.number_field :lat, :step => 'any',  class: 'form-control error-red' %>
@@ -85,7 +113,11 @@
   </div>
 
   <div class="col-md-3">
-    <%= f.label :lng, "Longitude"%>
+    <% if @blip.errors[:lng].present? %>
+      <div class="form-label-error"> Longitude <%= @blip.errors[:lng].first %> </div>
+    <% else %>
+      <div class="form-label">Longitude</div>
+    <% end %>
     <div class="form-field" style="margin: 0px 0px 0px 0px">
       <% if @blip.errors[:lng].present? %>
         <%= f.number_field :lng, :step => 'any',  class: 'form-control error-red' %>
