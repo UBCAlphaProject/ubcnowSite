@@ -1,20 +1,13 @@
-<%= f.error_messages %>
-  
+ <%= f.error_messages %>
+
+<div class="row"> 
+  <div class="col-md-6">
     <%= f.label :title, "Title"%>
     <div class="form-field">
       <% if @blip.errors[:title].present? %> 
         <%= f.text_field :title, class: 'form-control error-red' %>
       <% else %>
         <%= f.text_field :title, class: 'form-control' %>
-      <% end %>
-    </div>
-
-    <%= f.label :summary, "Summary"%>
-    <div class="form-field">
-      <% if @blip.errors[:summary].present? %>
-        <%= f.text_area :summary, class: 'form-control error-red' %>
-      <% else %>
-        <%= f.text_area :summary, class: 'form-control' %>
       <% end %>
     </div>
 
@@ -27,25 +20,48 @@
       <% end %>
     </div>
 
-    <%= f.label :startTime, "Start Time"%>
-    <div class="form-field">
-      <% if @blip.errors[:startTime].present? %>
-        <div class="error-red"><%= f.datetime_select :startTime,  :include_blank => true , start_year: Date.today.year , end_year: Date.today.year + 5 , class: 'form-control' %></div>
-      <% else %>
-        <%= f.datetime_select :startTime,  :include_blank => true , start_year: Date.today.year , end_year: Date.today.year + 5 , class: 'form-control' %>
-      <% end %>  
-    </div>
+    <div class="row">
+      <div class="col-md-6">
+        <%= f.label :startTime, "Start Time"%>
+        <div class="form-field">
+          <% if @blip.errors[:startTime].present? %>
+            <div class="error-red"><%= f.datetime_select :startTime,  :include_blank => true , start_year: Date.today.year , end_year: Date.today.year + 5 , class: 'form-control' %></div>
+          <% else %>
+            <%= f.datetime_select :startTime,  :include_blank => true , start_year: Date.today.year , end_year: Date.today.year + 5 , class: 'form-control' %>
+          <% end %>  
+        </div>
+      </div>
 
-    <%= f.label :endTime, "End Time"%>
+      <div class="col-md-6">
+        <div style="float:right">
+          <%= f.label :endTime, "End Time"%>
+          <div class="form-field">
+            <% if @blip.errors[:endTime].present? %>
+              <div class="error-red"><%= f.datetime_select :endTime,  :include_blank => true , start_year: Date.today.year , end_year: Date.today.year + 5 , class: 'form-control' %></div>
+            <% else %>
+              <%= f.datetime_select :endTime,  :include_blank => true , start_year: Date.today.year , end_year: Date.today.year + 5 , class: 'form-control' %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-6">
+    <%= f.label :summary, "Summary"%>
     <div class="form-field">
-      <% if @blip.errors[:endTime].present? %>
-        <div class="error-red"><%= f.datetime_select :endTime,  :include_blank => true , start_year: Date.today.year , end_year: Date.today.year + 5 , class: 'form-control' %></div>
+      <% if @blip.errors[:summary].present? %>
+        <%= f.text_area :summary, rows: "8", class: 'form-control error-red form-text-area' %>
       <% else %>
-        <%= f.datetime_select :endTime,  :include_blank => true , start_year: Date.today.year , end_year: Date.today.year + 5 , class: 'form-control' %>
+        <%= f.text_area :summary, rows: "8", class: 'form-control form-text-area' %>
       <% end %>
     </div>
+  </div>
+</div>
 
+<div class="row">
 
+  <div class="col-md-6"> 
     <%= f.label :address, "Address"%>
     <div class="form-field">
       <% if @blip.errors[:address].present? %>
@@ -54,21 +70,38 @@
         <%= f.text_field :address, class: 'form-control' %>
       <% end %>
     </div>
+  </div>
 
+    
+  <div class="col-md-3">
     <%= f.label :lat, "Latitude"%>
-    <div class="form-field">
+    <div class="form-field" style="margin: 0px 0px 0px 0px">
       <% if @blip.errors[:lat].present? %>
         <%= f.number_field :lat, :step => 'any',  class: 'form-control error-red' %>
       <% else %>
         <%= f.number_field :lat, :step => 'any',  class: 'form-control' %>
       <% end %>
     </div>
+  </div>
 
+  <div class="col-md-3">
     <%= f.label :lng, "Longitude"%>
-    <div class="form-field">
+    <div class="form-field" style="margin: 0px 0px 0px 0px">
       <% if @blip.errors[:lng].present? %>
         <%= f.number_field :lng, :step => 'any',  class: 'form-control error-red' %>
       <% else %>
         <%= f.number_field :lng, :step => 'any',  class: 'form-control' %>
       <% end %>
     </div>
+  </div>
+
+</div>
+
+
+
+
+
+
+
+
+
