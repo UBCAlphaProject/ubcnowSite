@@ -46,8 +46,8 @@ class BlipsController < ApplicationController
 
       @blip = Blip.new(cleanParams)                                                                  # create the blip 
       @blip.valid?                                                                                   # generate all the other error messages as well
-      @blip.errors[:startTime] = "must be left blank or filled completely" unless validStartTime     # if the start time is wrong add the error messages
-      @blip.errors[:endTime]   = "must be left blank or filled completely" unless validEndTime       # if the end time is wrong add the error messages
+      @blip.errors[:startTime] = "must be blank or complete" unless validStartTime                   # if the start time is wrong add the error messages
+      @blip.errors[:endTime]   = "must be blank or complete" unless validEndTime                     # if the end time is wrong add the error messages
       
       render :action => "new"                                                                        # render the new form
       return
@@ -155,9 +155,9 @@ class BlipsController < ApplicationController
 
       @blip = Blip.new(cleanParams)                                                                  # create the blip 
       @blip.valid?                                                                                   # generate all the other error messages as well
-      @blip.errors[:startTime] = "must be left blank or filled completely" unless validStartTime     # if the start time is wrong add the error messages
-      @blip.errors[:endTime]   = "must be left blank or filled completely" unless validEndTime       # if the end time is wrong add the error messages
-      
+      @blip.errors[:startTime] = "must be blank or complete" unless validStartTime                   # if the start time is wrong add the error messages
+      @blip.errors[:endTime]   = "must be blank or complete" unless validEndTime                     # if the end time is wrong add the error messages
+     
       render :action => "edit"                                                                       # render the edit form
       return
     end
