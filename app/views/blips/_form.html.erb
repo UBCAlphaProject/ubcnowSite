@@ -1,7 +1,7 @@
 <div class="row"> 
   <div class="col-md-6">
     <% if @blip.errors[:title].present? %>
-      <div class="form-label-error"> Title <%= @blip.errors[:title].first %> </div>
+      <div class="form-label-error"><span class="form-label">Title - </span><%= @blip.errors[:title].first %> </div>
     <% else %>
       <div class="form-label">Title</div>
     <% end %>
@@ -14,7 +14,7 @@
     </div>
 
     <% if @blip.errors[:link].present? %>
-      <div class="form-label-error"> Link <%= @blip.errors[:link].first %> </div>
+      <div class="form-label-error"><span class="form-label">Link - </span><%= @blip.errors[:link].first %> </div>
     <% else %>
       <div class="form-label"> Link </div>
     <% end %>
@@ -29,7 +29,7 @@
     <div class="row">
       <div class="col-md-6">
         <% if @blip.errors[:startTime].present? %>
-          <div class="form-label-error"> Start Time <%= @blip.errors[:startTime].first %> </div>
+          <div class="form-label-error"><span class="form-label">Start Time - </span><%= @blip.errors[:startTime].first %> </div>
         <% else %>
           <div class="form-label">Start Time</div>
         <% end %>
@@ -45,7 +45,7 @@
       <div class="col-md-6">
         <div style="float:right">
           <% if @blip.errors[:endTime].present? %>
-            <div class="form-label-error"> End Time <%= @blip.errors[:endTime].first %> </div>
+            <div class="form-label-error"><span class="form-label">End Time - </span><%= @blip.errors[:endTime].first %> </div>
           <% else %>
             <div class="form-label">End Time</div>
           <% end %>
@@ -63,7 +63,7 @@
 
   <div class="col-md-6">
     <% if @blip.errors[:summary].present? %>
-      <div class="form-label-error"> Summary <%= @blip.errors[:summary].first %> </div>
+      <div class="form-label-error"><span class="form-label">Summary - </span><%= @blip.errors[:summary].first %> </div>
     <% else %>
       <div class="form-label">Summary</div>
     <% end %>
@@ -81,7 +81,7 @@
 
   <div class="col-md-6"> 
     <% if @blip.errors[:address].present? %>
-      <div class="form-label-error"> Address <%= @blip.errors[:address].first %> </div>
+      <div class="form-label-error"><span class="form-label">Address - </span><%= @blip.errors[:address].first %> </div>
     <% else %>
       <div class="form-label">Address</div>
     <% end %>
@@ -97,7 +97,7 @@
     
   <div class="col-md-3">
     <% if @blip.errors[:lat].present? %>
-      <div class="form-label-error"> Latitude <%= @blip.errors[:lat].first %> </div>
+      <div class="form-label-error"><span class="form-label">Latitude - </span><%= @blip.errors[:lat].first %> </div>
     <% else %>
       <div class="form-label">Latitude</div>
     <% end %>
@@ -112,7 +112,7 @@
 
   <div class="col-md-3">
     <% if @blip.errors[:lng].present? %>
-      <div class="form-label-error"> Longitude <%= @blip.errors[:lng].first %> </div>
+      <div class="form-label-error"><span class="form-label">Longitude - </span><%= @blip.errors[:lng].first %> </div>
     <% else %>
       <div class="form-label">Longitude</div>
     <% end %>
